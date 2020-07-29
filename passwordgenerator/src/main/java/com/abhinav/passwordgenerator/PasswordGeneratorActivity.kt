@@ -8,12 +8,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import androidx.core.content.ContentProviderCompat.requireContext
-import org.w3c.dom.Text
 
 class PasswordGeneratorActivity : AppCompatActivity() {
 
-    public val PASSWORD = "Password"
+    companion object {
+        const val  REQUEST_CODE : Int = 404
+        const val  PASSWORD_GENERATED : String = "Password Generated"
+    }
 
     private lateinit var passwordTextView : TextView
     private lateinit var seekBarLength : TextView
@@ -24,6 +25,7 @@ class PasswordGeneratorActivity : AppCompatActivity() {
     private lateinit var seekBar: SeekBar
     private lateinit var generatePasswordButton : Button
     private lateinit var copyPassword : Button
+    private lateinit var finishActivityButton : Button
     private  var length : Int = 0
     private var pass = ""
 
@@ -32,7 +34,7 @@ class PasswordGeneratorActivity : AppCompatActivity() {
         setContentView(R.layout.password_generator)
 
         passwordTextView = findViewById(R.id.generatedPasswordTextView)
-        seekBarLength = findViewById(R.id.generatedPasswordTextView)
+        seekBarLength = findViewById(R.id.lengthText)
         upperCaseSwitch = findViewById(R.id.capitalsSwitch)
         lowerCaseSwitch = findViewById(R.id.smallLetterSwitch)
         symbolSwitch = findViewById(R.id.symbolSwitch)
@@ -40,34 +42,41 @@ class PasswordGeneratorActivity : AppCompatActivity() {
         seekBar = findViewById(R.id.lengthSeekBar)
         generatePasswordButton = findViewById(R.id.generatePassword)
         copyPassword = findViewById(R.id.copyPassword)
+        finishActivityButton = findViewById(R.id.closeActivity)
 
 
         generatePasswordButton.setOnClickListener {
-
-            pass = ""
-            length = seekBar.progress
-
-            var list  = ArrayList<Int>()
-            if(upperCaseSwitch.isChecked)
-                list.add(0)
-            if(lowerCaseSwitch.isChecked)
-                list.add(1)
-            if(numberSwitch.isChecked)
-                list.add(2)
-            if(symbolSwitch.isChecked)
-                list.add(3)
-
-            for(i in 1..length){
-                var choice = list.random()
-                when(choice){
-                    0-> pass += ('A'..'Z').random().toString()
-                    1-> pass += ('a'..'z').random().toString()
-                    2-> pass += ('0'..'9').random().toString()
-                    3-> pass += listOf('!','@','#','$','%','&','*','+','=','-','~').random().toString()
-                }
+            if(!(upperCaseSwitch.isChecked || lowerCaseSwitch.isChecked || symbolSwitch.isChecked || numberSwitch.isChecked)){
+                Toast.makeText(baseContext,"Select at least one", Toast.LENGTH_SHORT).show()
             }
-            passwordTextView.text = pass
-            passwordTextView.text = "Regenerate"
+            else{
+                pass = ""
+                length = seekBar.progress
+
+                var list  = ArrayList<Int>()
+                if(upperCaseSwitch.isChecked)
+                    list.add(0)
+                if(lowerCaseSwitch.isChecked)
+                    list.add(1)
+                if(numberSwitch.isChecked)
+                    list.add(2)
+                if(symbolSwitch.isChecked)
+                    list.add(3)
+
+                for(i in 1..length){
+                    var choice = list.random()
+                    when(choice){
+                        0-> pass += ('A'..'Z').random().toString()
+                        1-> pass += ('a'..'z').random().toString()
+                        2-> pass += ('0'..'9').random().toString()
+                        3-> pass += listOf('!','@','#','$','%','&','*','+','=','-','~').random().toString()
+                    }
+                }
+                passwordTextView.text = pass
+                generatePasswordButton.text = "Regenerate"
+            }
+
+
         }
         copyPassword.setOnClickListener {
             var clipboardManager : ClipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -75,7 +84,15 @@ class PasswordGeneratorActivity : AppCompatActivity() {
                 var data : ClipData = ClipData.newPlainText("copied text",pass)
                 clipboardManager.setPrimaryClip(data)
             }
-            Toast.makeText(this,"Copied to clipboard", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext,"Copied to clipboard", Toast.LENGTH_SHORT).show()
+        }
+        finishActivityButton.setOnClickListener {
+            if(callingActivity != null){
+                val data : Intent = Intent()
+                data.putExtra(PASSWORD_GENERATED,pass)
+                setResult(Activity.RESULT_OK,data)
+            }
+            finish();
         }
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
@@ -93,13 +110,10 @@ class PasswordGeneratorActivity : AppCompatActivity() {
 
         })
 
-        if(callingActivity != null){
-            val data : Intent
-            intent.putExtra(PASSWORD,pass)
-            setResult(Activity.RESULT_OK,intent)
-            finish();
-        }
+
 
 
     }
+
+
 }
