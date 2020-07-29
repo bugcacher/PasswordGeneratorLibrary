@@ -10,7 +10,7 @@
 - Include Special Symbols
 - Inlcude Numbers
 
-<img src="https://user-images.githubusercontent.com/44507909/88842767-a3027600-d1fd-11ea-9f86-290adcda7d58.jpg" width="15%" align="center"></img> 
+<img src="https://user-images.githubusercontent.com/44507909/88842767-a3027600-d1fd-11ea-9f86-290adcda7d58.jpg" width="50%" align="center"></img> 
 
 ## How to integrate into your app?
 Integrating the project is simple, All you need to do is follow the below steps
