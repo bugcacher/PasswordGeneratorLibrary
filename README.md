@@ -1,6 +1,10 @@
 # PasswordGeneratorLibrary
 
-[![](https://jitpack.io/v/abhinav0612/PasswordGeneratorLibrary.svg)](https://jitpack.io/#abhinav0612/PasswordGeneratorLibrary) [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
+<!--[![GitHub license](https://img.shields.io/github/license/abhinav0612/PasswordGeneratorLibrary)](https://github.com/abhinav0612/PasswordGeneratorLibrary/blob/master/LICENSE)
+-->
+[![Platform android](https://img.shields.io/badge/platform-android-blue)](https://img.shields.io/badge/platform-android-blue)
+[![](https://jitpack.io/v/abhinav0612/PasswordGeneratorLibrary.svg)](https://jitpack.io/#abhinav0612/PasswordGeneratorLibrary)
+[![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 
 ## An easy to use Password Generator Library.
 
@@ -10,7 +14,6 @@
 - Include Special Symbols
 - Inlcude Numbers
 
-<img src="https://user-images.githubusercontent.com/44507909/88842767-a3027600-d1fd-11ea-9f86-290adcda7d58.jpg" width="50%" align="center"></img> 
 
 ## How to integrate into your app?
 Integrating the project is simple, All you need to do is follow the below steps
@@ -78,6 +81,9 @@ var passwordGenerator = PasswordGenerator(12,                           // To sp
   String generatedPassword = obj.generatePassword();     // Call generatePassword() method te get the password              
 ```
 ### To use PasswordGeneratorActivity 
+
+
+<img src="https://user-images.githubusercontent.com/44507909/88842767-a3027600-d1fd-11ea-9f86-290adcda7d58.jpg" width="30%" align="center"></img> 
 
 ### Kotlin
 
