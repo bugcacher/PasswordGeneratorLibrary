@@ -12,7 +12,7 @@
 - Include Uppercase Letters
 - Include Lowercase Letters
 - Include Special Symbols
-- Inlcude Numbers
+- Include Numbers
 
 
 ## How to integrate into your app?
