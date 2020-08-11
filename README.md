@@ -80,7 +80,7 @@ var passwordGenerator = PasswordGenerator(12,                           // To sp
                 
   String generatedPassword = obj.generatePassword();     // Call generatePassword() method te get the password              
 ```
-### To use PasswordGeneratorActivity 
+## To use PasswordGeneratorActivity 
 
 
 <img src="https://user-images.githubusercontent.com/44507909/88842767-a3027600-d1fd-11ea-9f86-290adcda7d58.jpg" width="30%" align="center"></img> 
@@ -134,7 +134,7 @@ Intent intent = new Intent(getBaseContext(), PasswordGeneratorActivity.class);
 ```
 
 That's all and now you are ready to use it.
-### Leave a Star if you find this helpful :)
+### Support by clicking :star: if you find this helpful :smiley:
 
 ## Author
-Maintained by [Abhinav Singh](https://www.github.com/abhinav0612)
+Maintained by [Abhinav Singh](https://www.github.com/abhinav0612) :sunglasses:
