@@ -134,6 +134,7 @@ Intent intent = new Intent(getBaseContext(), PasswordGeneratorActivity.class);
 ```
 
 That's all and now you are ready to use it.
+### Leave a Star if you find this helpful :)
 
 ## Author
 Maintained by [Abhinav Singh](https://www.github.com/abhinav0612)
